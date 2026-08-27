@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>URL Shortener</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🔗 URL Shortener</h1>
+
+        <p class="subtitle">
+            Convert your long URL into a short and shareable link.
+        </p>
+
+        <form method="POST">
+
+            <input
+                type="text"
+                name="url"
+                placeholder="Enter your long URL..."
+                required
+            >
+
+            <button type="submit">
+                Shorten URL
+            </button>
+
+        </form>
+
+        {% if error %}
+
+            <div class="error">
+                {{ error }}
+            </div>
+
+        {% endif %}
+
+
+        {% if short_url %}
+
+            <div class="result">
+
+                <h3>Your Short URL</h3>
+
+                <div class="short-url">
+                    <input
+                        type="text"
+                        id="shortUrl"
+                        value="{{ short_url }}"
+                        readonly
+                    >
+
+                    <button onclick="copyURL()">
+                        Copy
+                    </button>
+                </div>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
