@@ -6,6 +6,7 @@ from urllib.parse import urlparse
 
 app = Flask(__name__)
 
+
 # Database create
 def init_db():
     conn = sqlite3.connect("database.db")
